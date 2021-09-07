@@ -1,0 +1,5 @@
+type ETHSpent @entity {
+  id: ID!
+  spent: BigDecimal!
+  spentUSD: BigDecimal!
+}

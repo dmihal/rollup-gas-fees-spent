@@ -1,0 +1,19 @@
+{
+  "name": "eth-spent-by-rollups",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ dmihal/eth-spent-by-rollups",
+    "create-hosted": "graph create --node http://subgraph.ethburned.com:8020/ dmihal/eth-spent-by-rollups",
+    "remove-hosted": "graph remove --node http://subgraph.ethburned.com:8020/ dmihal/eth-spent-by-rollups",
+    "deploy-hosted": "graph deploy --node http://subgraph.ethburned.com:8020/  --ipfs http://subgraph.ethburned.com:5001 dmihal/eth-spent-by-rollups",
+    "create-local": "graph create --node http://localhost:8020/ dmihal/eth-spent-by-rollups",
+    "remove-local": "graph remove --node http://localhost:8020/ dmihal/eth-spent-by-rollups",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 dmihal/eth-spent-by-rollups"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.21.0",
+    "@graphprotocol/graph-ts": "^0.20.0"
+  }
+}
