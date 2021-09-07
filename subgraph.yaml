@@ -46,3 +46,25 @@ dataSources:
         - event: SequencerBatchDeliveredFromOrigin(indexed uint256,indexed bytes32,uint256,bytes32,uint256)
           handler: handleBatch
       file: ./src/arbitrum.ts
+  - kind: ethereum/contract
+    name: ZKSync
+    network: mainnet
+    source:
+      address: "0xaBEA9132b05A70803a4E85094fD0e1800777fBEF"
+      abi: ZKSync
+      startBlock: 10269890
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ETHSpent
+      abis:
+        - name: Chainlink
+          file: ./abis/Chainlink.json
+        - name: ZKSync
+          file: ./abis/ZKSync.json
+      eventHandlers:
+        - event: BlockCommit(indexed uint32)
+          handler: handleBatch
+      file: ./src/zksync.ts
