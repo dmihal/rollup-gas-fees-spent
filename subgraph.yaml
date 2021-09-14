@@ -90,3 +90,25 @@ dataSources:
         - event: BlockSubmitted(indexed uint256,bytes32,bytes32)
           handler: handleBatch
       file: ./src/loopring.ts
+  - kind: ethereum/contract
+    name: Hermez
+    network: mainnet
+    source:
+      address: "0xa68d85df56e733a06443306a095646317b5fa633"
+      abi: Hermez
+      startBlock: 12093596
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ETHSpent
+      abis:
+        - name: Chainlink
+          file: ./abis/Chainlink.json
+        - name: Hermez
+          file: ./abis/Hermez.json
+      eventHandlers:
+        - event: ForgeBatch(indexed uint32,uint16)
+          handler: handleBatch
+      file: ./src/hermez.ts
