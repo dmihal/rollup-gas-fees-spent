@@ -134,3 +134,49 @@ dataSources:
         - event: RollupProcessed(indexed uint256,bytes32,bytes32,bytes32,uint256)
           handler: handleBatch
       file: ./src/aztec.ts
+  - kind: ethereum/contract
+    name: DYDXMemoryPage
+    network: mainnet
+    source:
+      address: "0xefbcce4659db72ec6897f46783303708cf9acef8"
+      abi: DYDX
+      startBlock: 11813182
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ETHSpent
+      abis:
+        - name: Chainlink
+          file: ./abis/Chainlink.json
+        - name: DYDX
+          file: ./abis/DYDX.json
+      eventHandlers:
+        - event: LogMemoryPageFactRegular(bytes32,uint256,uint256)
+          handler: handleBatch
+        - event: LogMemoryPageFactContinuous(bytes32,uint256,uint256)
+          handler: handleBatch
+      file: ./src/dydx.ts
+  - kind: ethereum/contract
+    name: DYDXFRI
+    network: mainnet
+    source:
+      address: "0xf6b83ccadeee478fc372af6ca7069b14fbc5e1b1"
+      abi: DYDXFRI
+      startBlock: 11813198
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - ETHSpent
+      abis:
+        - name: Chainlink
+          file: ./abis/Chainlink.json
+        - name: DYDXFRI
+          file: ./abis/DYDXFRI.json
+      callHandlers:
+        - function: verifyFRI(uint256[],uint256[],uint256,uint256,uint256)
+          handler: handleCall
+      file: ./src/dydx.ts
